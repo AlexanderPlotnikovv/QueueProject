@@ -16,6 +16,7 @@ class safe_queue
 	std::condition_variable cv;
 public:
 	safe_queue() = default;
+	bool empty();
 	void push(std::function<void()> f);
 	std::function<void()> pop();
 };

@@ -12,8 +12,11 @@
 
 class thread_pool
 {
-	std::vector<std::thread> vec;
+	std::vector<std::thread> tasks;
 	safe_queue q;
+	std::mutex mx;
+	std::condition_variable cv;
+	bool flag = false;
 public:
 	thread_pool();
 	void work();
