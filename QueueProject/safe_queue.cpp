@@ -16,6 +16,7 @@ void safe_queue::push(std::function<void()> f)
 std::function<void()> safe_queue::pop()
 {
 	std::unique_lock<std::mutex> lock(mx);
+	cv.wait(lock, [this] {return !q.empty(); });
 	auto f = std::move(q.front());
 	q.pop();
 	std::cout << "pop" << std::endl;

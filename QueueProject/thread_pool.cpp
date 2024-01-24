@@ -6,13 +6,13 @@ thread_pool::thread_pool()
 	int threads_count = std::thread::hardware_concurrency();
 	for (int i = 0; i < threads_count; ++i)
 	{
-		tasks.emplace_back([this] {work(); });
+		tasks.emplace_back([this] {});
 	}
 }
 
 void thread_pool::work()
 {
-	while (true && !q.empty())
+	while (!q.empty())
 	{
 		auto task = q.pop();
 		task();

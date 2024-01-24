@@ -19,6 +19,5 @@ int main()
 	tp.submit(f);
 	tp.submit(f);
 	tp.work();
-	tp.work();
 	return 0;
 }
